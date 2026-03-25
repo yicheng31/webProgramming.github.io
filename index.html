@@ -3,72 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercise10 12 14</title>
+    <title>Hello world DEMO</title>
     <style>
-        .container{
-            position:relative;
-            width:300px;
-            height:220px;
-            margin-top:20px;
-        }
-        .rectangle{
-            position:absolute;
-            width:160px;
-            height:160px;
-            background-color:blue;
-            border:3px solid black;
-            left:20px;
-            top:20px;
-        }
-        .circle{
-            position:absolute;
-            width:130px;
-            height:130px;
-            background-color:yellow;
-            border:5px solid red;
-            border-radius:50%;
-            left:110px;
-            top:35px;
-        }
+        body {
+    background-color: #e6e6e6;
+    font-family: "Times New Roman", serif;
+}
+
+/* 外框 */
+.container {
+    width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* 第一個 */
+.box1 {
+    background: #9fb7c4;
+    padding: 10px;
+    border: 6px double #e86c4f;
+    outline: 4px solid #e86c4f;
+    margin-bottom: 25px;
+}
+
+/* 第二個 */
+.box2 {
+    background: #f0f25a;
+    padding: 10px;
+    border: 4px solid #5b8cff;
+    border-radius: 15px;
+    margin-bottom: 25px;
+}
+
+/* 第三個 */
+.box3 {
+    background: #6ea97a;
+    padding: 10px;
+    border: 8px dotted gray;
+}
+
+/* 文字 */
+h1 {
+    margin: 0;
+}
     </style>
 </head>
 <body>
-    <h2> Code Display </h2>
-    <pre>
-        <code>
-            var person={
-                firstName: "yicheng",
-                lastName: "Lin",
-                studentId: "113403027"
-            }
-        </code>
-    </pre>
-    <hr/>
-    <h2>Form Example</h2>
-    <form>
-        <p>
-            <lable for="fname">First Name：</lable>
-            <br>
-            <input type="text" id="fname" name="fname" value="Your first name"/>
-        </p>
-        <p>
-            <lable for="lname">Lasy Name：</lable>
-            <br>
-            <input type="text" id="lname" name="lname" value="Your last name"/>
-        </p>
-        <p>
-            <lable for="studentid">Student ID: </lable>
-            <br>
-            <input type="text" id="studentid" name="studentid" value="Your student ID"/>
-        </p>
-        <input type="submit" value="submit"/>
-        <input type="reset" value="reset"/>
-    </form>
-    <hr/>
-    <h2>Circle and Rectangle</h2>
-    <div class="container">
-        <div class="rectangle"></div>
-        <div class="circle"></div>
+    <div class="containier">
+        <div class="box1">Hello World</div>
+        <div class="box2">Hello World</div>
+        <div class="box3">Hello World</div>
     </div>
 </body>
 </html>
