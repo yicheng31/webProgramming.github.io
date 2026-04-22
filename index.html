@@ -1,157 +1,107 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>網頁作業練習</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0; /* 模擬圖片中的灰色背景 */
-            padding: 50px;
-            margin: 0;
-        }
+<meta charset="UTF-8">
+<title>Button Demo</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    margin: 0;
+  }
 
-        /* 外部白框容器 */
-        .container {
-            background-color: white;
-            padding: 20px;
-            border: 1px solid #ddd;
-            min-height: 300px;
-            position: relative;
-        }
+  /* 左側列表 */
+  .sidebar {
+    width: 220px;
+    padding: 10px;
+    border-right: 1px solid #ccc;
+  }
 
-        /* 表格樣式 */
-        table {
-            border-collapse: collapse;
-            width: 300px;
-            border: 2px solid #555;
-        }
+  .item {
+    height: 20px;
+    background-color: #90ee90;
+    margin-bottom: 6px;
+  }
 
-        th, td {
-            border: 1px solid #555;
-            padding: 10px;
-            text-align: left;
-        }
+  /* 右側內容 */
+  .content {
+    flex: 1;
+    padding: 20px;
+  }
 
-        /* 表格標頭：灰色背景、白色文字 */
-        th {
-            background-color: #777;
-            color: white;
-        }
+  .image-box {
+    width: 500px;
+    height: 250px;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-        /* 交替背景顏色 */
-        /* 第一列與第三列 (1, 3) 為黃色 */
-        tr:nth-child(even) {
-            background-color: #ffff99;
-        }
-        
-        /* 第二列 (2) 為白色 */
-        tr:nth-child(odd) {
-            background-color: white;
-        }
+  /* 按鈕樣式（依照圖） */
+  .btn {
+    margin-top: 10px;
+    height: 22px;
+    padding: 0 12px;
+    border-radius: 8px;
+    border: 1px solid #222;
+    background-color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+  }
 
-        /* 固定定位的 Div */
-        .fixed-box {
-            position: fixed;
-            top: 60px;   /* 距離頂部 */
-            right: 100px; /* 距離右側 */
-            width: 150px;
-            height: 150px;
-            border: 4px solid #7c9c4c; /* 綠色邊框 */
-            padding: 10px;
-            background-color: white;
-            font-size: 18px;
-            box-sizing: border-box;
-        }
-        
-        .container2 {
-            width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
-            font-family: serif;
-            line-height: 1.6;
-            background-color: white;
-        }
+  .btn:hover {
+    background-color: #f0f0f0;
+  }
 
-        /* 右側浮動的 div */
-        .float-box {
-            float: right;
-            width: 180px;
-            height: 150px;
-            border: 4px solid #7c9c4c; /* 綠色邊框 */
-            margin-left: 20px;
-            padding: 10px;
-            overflow: auto; /* 重點：當內容超出時顯示捲軸 */
-            font-size: 20px;
-            background-color: white;
-        }
-
-        /* 行內區塊樣式 (Love) */
-        .inline-box {
-            display: inline-block;
-            background-color: #ffff00; /* 黃色背景 */
-            border: 1px solid #0000ff; /* 藍色邊框 */
-            padding: 2px 5px;
-            margin: 0 2px;
-            line-height: 1;
-        }
-
-        /* 清除浮動防止容器塌陷 */
-        .clearfix::after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-    </style>
+  /* 詳細資訊區 */
+  .details {
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: none;
+  }
+</style>
 </head>
 <body>
 
-    <div class="container">
-        <table>
-            <thead>
-                <tr>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>3</td>
-                </tr>
-            </tbody>
-        </table>
+<!-- 左側（模擬圖片清單） -->
+<div class="sidebar">
+  <div class="item"></div>
+  <div class="item"></div>
+  <div class="item"></div>
+  <div class="item"></div>
+  <div class="item"></div>
+</div>
 
-        <div class="fixed-box">
-            This div element has position: fixed;
-        </div>
-    </div>
-    <hr/>
-    <div class="container2">
-        <div class="float-box">
-            A float div with overflow auto. A float div with overflow auto. A float div with overflow auto.
-        </div>
-        <p>
-            (Just long sentence.) Let me not to the marriage of true minds Admit impediments. 
-        <span class="inline-box">Love</span> is not love Which alters when it alteration finds, 
-        Or bends with the remover to remove: O, no! it is an ever-fix'ed mark, That looks on tempests 
-        and is never shaken; It is the star to every wand'ring bark, Whose worth's unknown, although 
-        his heigth be taken. <span class="inline-box">Love's</span> not Time's fool, though rosy lips 
-        and cheeks Within his bending sickle's compass come; <span class="inline-box">Love</span> 
-        alters not with his brief hours and weeks, But bears it out even to the edge of doom: 
-        If this be error and upon me proved, I never writ, nor no man ever loved.
-        </p>
-    </div>
+<!-- 右側 -->
+<div class="content">
+  <div class="image-box">
+    <span>Image Placeholder</span>
+  </div>
+
+  <button class="btn" onclick="toggleDetails()">
+    查看詳細資訊
+  </button>
+
+  <div class="details" id="details">
+    <p><strong>Title:</strong> Sunset View</p>
+    <p><strong>Description:</strong> A beautiful sunset over the lake.</p>
+    <p><strong>Size:</strong> 496 x 240</p>
+  </div>
+</div>
+
+<script>
+  function toggleDetails() {
+    const detail = document.getElementById("details");
+    if (detail.style.display === "none") {
+      detail.style.display = "block";
+    } else {
+      detail.style.display = "none";
+    }
+  }
+</script>
+
 </body>
+</html>
 </html>
