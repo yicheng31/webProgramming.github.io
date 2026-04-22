@@ -1,122 +1,61 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bootstrap & RWD 嚴格 480px 版</title>
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f4f4; }
-    .section { background: white; padding: 20px; margin-bottom: 40px; border-bottom: 1px solid #ddd; }
-    h2 { border-left: 5px solid #333; padding-left: 10px; margin-bottom: 20px; }
+    <meta charset="UTF-8">
+    <title>Design Spec Button</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-    /* ===== 第 5 題 RWD 核心樣式 ===== */
-    .rwd-background {
-      background-color: #4fa3d1;
-      padding: 30px 15px;
-      display: flex;
-      justify-content: center;
-    }
+        /* 延用你提供的設計規範 */
+        .info-button {
+            height: 22px;
+            border-radius: 8px;
+            padding: 0 18px;
+            background-color: #ffffff;
+            border: 1px solid #2f2f2f;
+            font-family: 'Roboto', sans-serif;
+            font-size: 13px;
+            color: #2f2f2f;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-sizing: border-box;
+            transition: all 0.2s;
+            outline: none;
+        }
 
-    .rwd-card {
-      width: 100%;
-      max-width: 480px; /* 讓卡片本身就接近臨界值，方便觀察 */
-      background: white;
-      padding: 15px;
-      border-radius: 8px;
-    }
+        .info-button:hover {
+            background-color: #f0f0f0;
+        }
 
-    .block-green {
-      height: 80px;
-      background-color: #a4d44d;
-      margin-bottom: 10px;
-    }
-
-    /* 預設：橫向排列 (b圖) */
-    .blue-group {
-      display: flex;
-      flex-direction: row; 
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .block-blue {
-      flex: 1; /* 平分寬度 */
-      height: 100px;
-      background-color: #1bb3c1;
-    }
-
-    .gray-group {
-      display: flex;
-      gap: 5px;
-    }
-
-    .block-gray {
-      flex: 1;
-      height: 35px;
-      background-color: #eee;
-    }
-
-    /* ===== 當寬度小於或等於 480px 時觸發 (a圖) ===== */
-    @media screen and (max-width: 480px) {
-      .blue-group {
-        flex-direction: column !important; /* 強制改為縱向排列 */
-      }
-      
-      .block-blue {
-        width: 100% !important; /* 強制寬度填滿 */
-        height: 60px; /* 縱向時縮短一點高度以免太佔空間 */
-      }
-
-      .gray-group {
-        flex-wrap: wrap; /* 灰色區塊如果太擠也可以換行 */
-      }
-    }
-  </style>
+        /* 點擊時的視覺回饋 */
+        .info-button:active {
+            background-color: #e0e0e0;
+        }
+    </style>
 </head>
 <body>
 
-  <div class="section">
-    <h2>1. Bootstrap Practice</h2>
-    <div class="container">
-      <div class="jumbotron">
-        <h1>My First Bootstrap Page</h1>
-      </div>
-      <div class="form-group">
-        <label>Input:</label>
-        <input type="text" class="form-control">
-      </div>
-      <div class="alert alert-success">Successful alert</div>
-      <button class="btn btn-default">Button</button>
-      <span class="badge">badge</span>
-    </div>
-  </div>
+    <button id="toggleBtn" class="info-button" onclick="handleToggle()">查看資訊</button>
 
-  <div class="section">
-    <h2>5. Responsive Layout (480px)</h2>
-    <p>測試說明：請將視窗縮小到非常窄（手機寬度），藍色塊會由「橫排」變「直排」。</p>
-    
-    <div class="rwd-background">
-      <div class="rwd-card">
-        <div class="block-green"></div>
-        
-        <div class="blue-group">
-          <div class="block-blue"></div>
-          <div class="block-blue"></div>
-          <div class="block-blue"></div>
-        </div>
-
-        <div class="gray-group">
-          <div class="block-gray"></div>
-          <div class="block-gray"></div>
-          <div class="block-gray"></div>
-          <div class="block-gray"></div>
-        </div>
-      </div>
-    </div>
-  </div>
+    <script>
+        function handleToggle() {
+            // 1. 抓到按鈕這個元素
+            const btn = document.getElementById('toggleBtn');
+            
+            // 2. 判斷目前的文字內容
+            if (btn.innerText === "查看資訊") {
+                // 如果是查看資訊，就換成收起
+                btn.innerText = "收起資訊";
+                console.log("狀態：已展開");
+            } else {
+                // 否則就換回查看資訊
+                btn.innerText = "查看資訊";
+                console.log("狀態：已收起");
+            }
+        }
+    </script>
 
 </body>
 </html>
