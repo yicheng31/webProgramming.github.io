@@ -1,9 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Button Demo</title>
 <style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+  }
+
+  h2 {
+    margin: 40px 20px 10px;
+  }
+
+  .section {
+    margin-bottom: 60px; /* 題目間距 */
+  }
+
+  /* ===== 第1題：圖片 ===== */
   .container {
     display: flex;
     gap: 20px;
@@ -17,14 +26,12 @@
     align-items: center;
   }
 
-  /* 左：圓角、不變形 */
   .img-left {
     width: 100%;
     border-radius: 18px;
     object-fit: cover;
   }
 
-  /* 中：圓形 + border */
   .img-middle {
     width: 150px;
     height: 150px;
@@ -33,20 +40,17 @@
     object-fit: cover;
   }
 
-  /* 右：固定高度（變形） */
   .img-right {
     width: 100%;
     height: 300px;
     object-fit: fill;
   }
 
-  body {
-    font-family: Arial, sans-serif;
+  /* ===== 第2題：按鈕 ===== */
+  .layout {
     display: flex;
-    margin: 0;
   }
 
-  /* 左側列表 */
   .sidebar {
     width: 220px;
     padding: 10px;
@@ -59,7 +63,6 @@
     margin-bottom: 6px;
   }
 
-  /* 右側內容 */
   .content {
     flex: 1;
     padding: 20px;
@@ -74,7 +77,6 @@
     justify-content: center;
   }
 
-  /* 按鈕樣式 */
   .btn {
     margin-top: 10px;
     height: 22px;
@@ -86,75 +88,145 @@
     cursor: pointer;
   }
 
-  .btn:hover {
-    background-color: #f0f0f0;
-  }
-
   .details {
     margin-top: 15px;
     padding: 10px;
     border: 1px solid #ccc;
     display: none;
   }
+
+  /* ===== 第5題：RWD ===== */
+  .rwd-container {
+    background: #4fa3d1;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .card {
+    width: 300px;
+    background: #eee;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .green {
+    height: 80px;
+    background: yellowgreen;
+    margin-bottom: 10px;
+  }
+
+  .blue-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .blue {
+    flex: 1;
+    height: 80px;
+    background: #1bb3c1;
+  }
+
+  .gray-group {
+    display: flex;
+    gap: 10px;
+  }
+
+  .gray {
+    flex: 1;
+    height: 40px;
+    background: #ccc;
+  }
+
+  /* 手機版（<480px） */
+  @media (max-width: 480px) {
+    .blue-group {
+      flex-direction: column;
+    }
+
+    .gray-group {
+      flex-direction: column;
+    }
+  }
 </style>
-</head>
+
 <body>
 
-<!-- 第一題：圖片 -->
-<h2>exercise 26</h2>
-<div class="container">
+<!-- ===== 第1題 ===== -->
+<div class="section">
+  <h2>1. Image Styling</h2>
 
-  <div class="box">
-    <img src="https://picsum.photos/id/1011/600/400" class="img-left">
+  <div class="container">
+    <div class="box">
+      <img src="https://picsum.photos/id/1011/600/400" class="img-left">
+    </div>
+
+    <div class="box">
+      <img src="https://picsum.photos/id/1015/600/400" class="img-middle">
+    </div>
+
+    <div class="box">
+      <img src="https://picsum.photos/id/1011/600/400" class="img-right">
+    </div>
   </div>
-
-  <div class="box">
-    <img src="https://picsum.photos/id/1015/600/400" class="img-middle">
-  </div>
-
-  <div class="box">
-    <img src="https://picsum.photos/id/1011/600/400" class="img-right">
-  </div>
-
 </div>
 
-<!-- 第二題：側邊 + 按鈕 -->
-<h2>exercise 23</h2>
-<div class="sidebar">
-  <div class="item"></div>
-  <div class="item"></div>
-  <div class="item"></div>
-  <div class="item"></div>
-  <div class="item"></div>
+<!-- ===== 第2題 ===== -->
+<div class="section">
+  <h2>2. Button Interaction</h2>
+
+  <div class="layout">
+    <div class="sidebar">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+
+    <div class="content">
+      <div class="image-box">Image</div>
+
+      <button class="btn" onclick="toggleDetails()">
+        查看詳細資訊
+      </button>
+
+      <div class="details" id="details">
+        <p>Detail information shown here.</p>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="content">
-  <div class="image-box">
-    <span>Image Placeholder</span>
-  </div>
+<!-- ===== 第5題 ===== -->
+<div class="section">
+  <h2>5. Responsive Layout (RWD)</h2>
 
-  <button class="btn" onclick="toggleDetails()">
-    查看詳細資訊
-  </button>
+  <div class="rwd-container">
+    <div class="card">
+      <div class="green"></div>
 
-  <div class="details" id="details">
-    <p><strong>Title:</strong> Sunset View</p>
-    <p><strong>Description:</strong> A beautiful sunset over the lake.</p>
-    <p><strong>Size:</strong> 496 x 240</p>
+      <div class="blue-group">
+        <div class="blue"></div>
+        <div class="blue"></div>
+        <div class="blue"></div>
+      </div>
+
+      <div class="gray-group">
+        <div class="gray"></div>
+        <div class="gray"></div>
+        <div class="gray"></div>
+        <div class="gray"></div>
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
   function toggleDetails() {
-    const detail = document.getElementById("details");
-    if (detail.style.display === "none") {
-      detail.style.display = "block";
-    } else {
-      detail.style.display = "none";
-    }
+    const d = document.getElementById("details");
+    d.style.display = (d.style.display === "block") ? "none" : "block";
   }
 </script>
 
 </body>
-</html>
-</html>
