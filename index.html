@@ -94,4 +94,167 @@
       display: none;
     }
 
-    /*
+    /* ===== 第5題：RWD 佈局實作 (符合題目圖片) ===== */
+    .rwd-background {
+      background: #4fa3d1; /* 藍色背景 */
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .rwd-card {
+      width: 100%;
+      max-width: 500px;
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    .green-block {
+      height: 100px;
+      background: #a4d44d;
+      margin-bottom: 10px;
+    }
+
+    .blue-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .blue-block {
+      flex: 1;
+      height: 100px;
+      background: #1bb3c1;
+    }
+
+    .gray-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .gray-block {
+      flex: 1;
+      height: 40px;
+      background: #eeeeee;
+    }
+
+    /* 手機版 RWD 設定 (< 480px) */
+    @media (max-width: 480px) {
+      .blue-group {
+        flex-direction: column; /* 藍色塊變垂直排列 (圖a) */
+      }
+
+      .gray-group {
+        flex-wrap: wrap; /* 灰色塊自動換行 */
+      }
+      
+      .gray-block {
+        flex: 1 0 40%; /* 在手機版變兩排排列 */
+      }
+
+      .layout-wrapper {
+        flex-direction: column;
+      }
+      
+      .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #ccc;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="section">
+    <h2>1. Bootstrap Practice</h2>
+    <br>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>My First Bootstrap Page</h1>
+      </div>
+
+      <div class="form-group">
+        <label>Input:</label>
+        <input type="text" class="form-control">
+      </div>
+
+      <div class="alert alert-success">
+        Successful alert
+      </div>
+
+      <div style="margin-top: 10px;">
+        <button class="btn btn-default">Button</button>
+        <span class="badge">badge</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>2. Image Styling</h2>
+    <div class="img-flex-container">
+      <div class="box"><img src="https://picsum.photos/id/1011/600/400" class="img-left"></div>
+      <div class="box"><img src="https://picsum.photos/id/1015/600/400" class="img-middle"></div>
+      <div class="box"><img src="https://picsum.photos/id/1016/600/400" class="img-right"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>3. Button Interaction</h2>
+    <div class="layout-wrapper">
+      <div class="sidebar">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+      </div>
+
+      <div class="content-pane">
+        <div class="image-box">Image</div>
+        <button class="custom-btn" onclick="toggleDetails()">查看詳細資訊</button>
+        <div class="details-box" id="details">
+          <p>這裡顯示了詳細資訊內容。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>4. Responsive Layout (RWD)</h2>
+    <p style="margin-left:20px;">(提示：將瀏覽器視窗縮小至 480px 以下可觀察佈局變化)</p>
+    <br>
+    <div class="rwd-background">
+      <div class="rwd-card">
+        <div class="green-block"></div>
+
+        <div class="blue-group">
+          <div class="blue-block"></div>
+          <div class="blue-block"></div>
+          <div class="blue-block"></div>
+        </div>
+
+        <div class="gray-group">
+          <div class="gray-block"></div>
+          <div class="gray-block"></div>
+          <div class="gray-block"></div>
+          <div class="gray-block"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 按鈕切換功能
+    function toggleDetails() {
+      const d = document.getElementById("details");
+      if (d.style.display === "block") {
+        d.style.display = "none";
+      } else {
+        d.style.display = "block";
+      }
+    }
+  </script>
+
+</body>
+</html>
