@@ -3,164 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bootstrap & RWD 整合練習</title>
+  <title>Bootstrap & RWD 嚴格 480px 版</title>
   
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   
   <style>
-    /* 全域樣式設定 */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding-bottom: 100px;
-      background-color: #f8f9fa;
-    }
+    body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f4f4; }
+    .section { background: white; padding: 20px; margin-bottom: 40px; border-bottom: 1px solid #ddd; }
+    h2 { border-left: 5px solid #333; padding-left: 10px; margin-bottom: 20px; }
 
-    h2 {
-      margin: 40px 20px 10px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid #ddd;
-    }
-
-    .section {
-      margin-bottom: 60px;
-      padding: 20px;
-      background-color: #fff;
-    }
-
-    /* ===== 第1題：圖片樣式 (保留您的設定) ===== */
-    .img-flex-container {
-      display: flex;
-      gap: 20px;
-      padding: 20px;
-      flex-wrap: wrap;
-    }
-
-    .box {
-      flex: 1;
-      min-width: 200px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .img-left { width: 100%; border-radius: 18px; object-fit: cover; }
-    .img-middle { width: 150px; height: 150px; border-radius: 50%; border: 15px solid #ccc; object-fit: cover; }
-    .img-right { width: 100%; height: 300px; object-fit: fill; }
-
-    /* ===== 第2題：按鈕互動 (調整類別避免衝突) ===== */
-    .layout-wrapper {
-      display: flex;
-      border: 1px solid #ccc;
-    }
-
-    .sidebar {
-      width: 220px;
-      padding: 10px;
-      border-right: 1px solid #ccc;
-      background-color: #fdfdfd;
-    }
-
-    .item { height: 20px; background-color: #90ee90; margin-bottom: 6px; }
-
-    .content-pane {
-      flex: 1;
-      padding: 20px;
-    }
-
-    .image-box {
-      width: 100%;
-      max-width: 500px;
-      height: 250px;
-      background-color: #ddd;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .custom-btn {
-      margin-top: 10px;
-      padding: 5px 15px;
-      border-radius: 8px;
-      border: 1px solid #222;
-      background-color: #fff;
-      cursor: pointer;
-    }
-
-    .details-box {
-      margin-top: 15px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      display: none;
-    }
-
-    /* ===== 第5題：RWD 佈局實作 (符合題目圖片) ===== */
+    /* ===== 第 5 題 RWD 核心樣式 ===== */
     .rwd-background {
-      background: #4fa3d1; /* 藍色背景 */
-      padding: 30px;
+      background-color: #4fa3d1;
+      padding: 30px 15px;
       display: flex;
       justify-content: center;
     }
 
     .rwd-card {
       width: 100%;
-      max-width: 500px;
-      background: #fff;
+      max-width: 480px; /* 讓卡片本身就接近臨界值，方便觀察 */
+      background: white;
       padding: 15px;
-      border-radius: 10px;
+      border-radius: 8px;
     }
 
-    .green-block {
-      height: 100px;
-      background: #a4d44d;
+    .block-green {
+      height: 80px;
+      background-color: #a4d44d;
       margin-bottom: 10px;
     }
 
+    /* 預設：橫向排列 (b圖) */
     .blue-group {
       display: flex;
+      flex-direction: row; 
       gap: 10px;
       margin-bottom: 10px;
     }
 
-    .blue-block {
-      flex: 1;
+    .block-blue {
+      flex: 1; /* 平分寬度 */
       height: 100px;
-      background: #1bb3c1;
+      background-color: #1bb3c1;
     }
 
     .gray-group {
       display: flex;
-      gap: 10px;
+      gap: 5px;
     }
 
-    .gray-block {
+    .block-gray {
       flex: 1;
-      height: 40px;
-      background: #eeeeee;
+      height: 35px;
+      background-color: #eee;
     }
 
-    /* 手機版 RWD 設定 (< 480px) */
-    @media (max-width: 480px) {
+    /* ===== 當寬度小於或等於 480px 時觸發 (a圖) ===== */
+    @media screen and (max-width: 480px) {
       .blue-group {
-        flex-direction: column; /* 藍色塊變垂直排列 (圖a) */
+        flex-direction: column !important; /* 強制改為縱向排列 */
+      }
+      
+      .block-blue {
+        width: 100% !important; /* 強制寬度填滿 */
+        height: 60px; /* 縱向時縮短一點高度以免太佔空間 */
       }
 
       .gray-group {
-        flex-wrap: wrap; /* 灰色塊自動換行 */
-      }
-      
-      .gray-block {
-        flex: 1 0 40%; /* 在手機版變兩排排列 */
-      }
-
-      .layout-wrapper {
-        flex-direction: column;
-      }
-      
-      .sidebar {
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid #ccc;
+        flex-wrap: wrap; /* 灰色區塊如果太擠也可以換行 */
       }
     }
   </style>
@@ -169,92 +80,43 @@
 
   <div class="section">
     <h2>1. Bootstrap Practice</h2>
-    <br>
     <div class="container">
       <div class="jumbotron">
         <h1>My First Bootstrap Page</h1>
       </div>
-
       <div class="form-group">
         <label>Input:</label>
         <input type="text" class="form-control">
       </div>
-
-      <div class="alert alert-success">
-        Successful alert
-      </div>
-
-      <div style="margin-top: 10px;">
-        <button class="btn btn-default">Button</button>
-        <span class="badge">badge</span>
-      </div>
+      <div class="alert alert-success">Successful alert</div>
+      <button class="btn btn-default">Button</button>
+      <span class="badge">badge</span>
     </div>
   </div>
 
   <div class="section">
-    <h2>2. Image Styling</h2>
-    <div class="img-flex-container">
-      <div class="box"><img src="https://picsum.photos/id/1011/600/400" class="img-left"></div>
-      <div class="box"><img src="https://picsum.photos/id/1015/600/400" class="img-middle"></div>
-      <div class="box"><img src="https://picsum.photos/id/1016/600/400" class="img-right"></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>3. Button Interaction</h2>
-    <div class="layout-wrapper">
-      <div class="sidebar">
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-      </div>
-
-      <div class="content-pane">
-        <div class="image-box">Image</div>
-        <button class="custom-btn" onclick="toggleDetails()">查看詳細資訊</button>
-        <div class="details-box" id="details">
-          <p>這裡顯示了詳細資訊內容。</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>4. Responsive Layout (RWD)</h2>
-    <p style="margin-left:20px;">(提示：將瀏覽器視窗縮小至 480px 以下可觀察佈局變化)</p>
-    <br>
+    <h2>5. Responsive Layout (480px)</h2>
+    <p>測試說明：請將視窗縮小到非常窄（手機寬度），藍色塊會由「橫排」變「直排」。</p>
+    
     <div class="rwd-background">
       <div class="rwd-card">
-        <div class="green-block"></div>
-
+        <div class="block-green"></div>
+        
         <div class="blue-group">
-          <div class="blue-block"></div>
-          <div class="blue-block"></div>
-          <div class="blue-block"></div>
+          <div class="block-blue"></div>
+          <div class="block-blue"></div>
+          <div class="block-blue"></div>
         </div>
 
         <div class="gray-group">
-          <div class="gray-block"></div>
-          <div class="gray-block"></div>
-          <div class="gray-block"></div>
-          <div class="gray-block"></div>
+          <div class="block-gray"></div>
+          <div class="block-gray"></div>
+          <div class="block-gray"></div>
+          <div class="block-gray"></div>
         </div>
       </div>
     </div>
   </div>
-
-  <script>
-    // 按鈕切換功能
-    function toggleDetails() {
-      const d = document.getElementById("details");
-      if (d.style.display === "block") {
-        d.style.display = "none";
-      } else {
-        d.style.display = "block";
-      }
-    }
-  </script>
 
 </body>
 </html>
