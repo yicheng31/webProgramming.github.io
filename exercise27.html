@@ -1,1 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 27 - Responsive Layout</title>
+    <style>
+        /* 基礎樣式設定 */
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #4da6ff; /* 藍色背景 */
+            font-family: Arial, sans-serif;
+        }
 
+        .main-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 各區塊共用樣式 */
+        .block {
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        /* 頂部綠色區塊 */
+        .header-block {
+            background-color: #a6d947;
+            height: 100px;
+        }
+
+        /* 中間與底部容器 */
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* 中間青色區塊樣式 */
+        .middle-block {
+            background-color: #00bcd4;
+            height: 60px;
+            flex: 1 1 calc(33.33% - 10px); /* 圖 b：三欄橫排 */
+        }
+
+        /* 底部淺灰色區塊樣式 */
+        .bottom-block {
+            background-color: #e0e0e0;
+            height: 40px;
+            flex: 1 1 calc(25% - 10px); /* 圖 b：四欄橫排 */
+        }
+
+        /* --- 響應式核心：當寬度小於 480px 時 (圖 a) --- */
+        @media (max-width: 480px) {
+            .middle-block {
+                flex: 1 1 100%; /* 中間變為單欄縱排 */
+            }
+
+            .bottom-block {
+                flex: 1 1 calc(50% - 10px); /* 底部變為兩欄橫排 */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <!-- 頂部區塊 -->
+        <div class="header-block block"></div>
+
+        <!-- 中間區塊 -->
+        <div class="flex-container">
+            <div class="middle-block block"></div>
+            <div class="middle-block block"></div>
+            <div class="middle-block block"></div>
+        </div>
+
+        <!-- 底部區塊 -->
+        <div class="flex-container">
+            <div class="bottom-block block"></div>
+            <div class="bottom-block block"></div>
+            <div class="bottom-block block"></div>
+            <div class="bottom-block block"></div>
+        </div>
+    </div>
+
+</body>
+</html>
