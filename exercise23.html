@@ -1,1 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工程師與設計師協作練習</title>
+    <!-- 載入設計稿要求的 Roboto 字體 -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            padding: 50px;
+        }
 
+        /* 主容器 */
+        .preview-card {
+            width: 496px;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            padding: 0;
+            position: relative;
+        }
+
+        /* 圖片區域 */
+        .image-placeholder {
+            width: 450px;
+            height: 240px;
+            background-color: #e0e0e0;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #707070;
+            background-image: url('https://via.placeholder.com/450x240?text=Default+450x240');
+            background-size: cover;
+        }
+
+        /* 按鈕容器 - 靠右對齊 */
+        .button-bar {
+            padding: 0 20px 10px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        /* 根據設計稿標註：size: h22 / R8 */
+        .info-btn {
+            height: 22px;          /* 高度 22px */
+            border-radius: 8px;    /* 圓角 8px */
+            background: #ffffff;
+            border: 1px solid #2f2f2f; /* 外框色 */
+            color: #2f2f2f;        /* 字體色 */
+            font-size: 13px;       /* 標註為 13px */
+            padding: 0 15px;
+            cursor: pointer;
+            line-height: 20px;     /* 置中對齊 */
+            transition: all 0.2s;
+        }
+
+        .info-btn:hover {
+            background: #f0f0f0;
+        }
+
+        /* 詳細資訊區塊 - 預設隱藏 */
+        #details {
+            display: none;
+            padding: 15px 20px;
+            background-color: #fdfdfd;
+            border-top: 1px solid #eee;
+            font-size: 13px;
+            color: #707070;
+            line-height: 1.6;
+        }
+
+        .info-item {
+            margin-bottom: 5px;
+        }
+
+        /* 強調標籤顏色 */
+        .label {
+            color: #2f2f2f;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="preview-card">
+    <!-- 預覽圖片 -->
+    <div class="image-placeholder"></div>
+
+    <!-- 查看資訊按鈕 -->
+    <div class="button-bar">
+        <button class="info-btn" id="toggleBtn">查看資訊</button>
+    </div>
+
+    <!-- 詳細資訊區塊 -->
+    <div id="details">
+        <div class="info-item"><span class="label">修改日期：</span>2017/10/12</div>
+        <div class="info-item"><span class="label">類型：</span>JPG</div>
+        <div class="info-item"><span class="label">大小：</span>488.97KB</div>
+        <div class="info-item"><span class="label">路徑：</span>\Common Module\slice\sample</div>
+    </div>
+</div>
+
+<script>
+    const btn = document.getElementById('toggleBtn');
+    const details = document.getElementById('details');
+
+    btn.addEventListener('click', function() {
+        // 切換顯示狀態
+        if (details.style.display === 'block') {
+            details.style.display = 'none';
+            this.textContent = '查看資訊';
+        } else {
+            details.style.display = 'block';
+            this.textContent = '收起資訊';
+        }
+    });
+</script>
+
+</body>
+</html>
