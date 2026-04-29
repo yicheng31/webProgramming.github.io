@@ -3,85 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercise 23 - CSS 圖片樣式實作</title>
+    <title>Exercise 23 - 工程師與設計師協作</title>
+    <!-- 載入設計稿要求的 Roboto 字體 -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+        }
+
+        /* 主容器，寬度參考設計稿 496px */
+        .preview-card {
+            width: 496px;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* 預覽圖片區域 */
+        .image-box {
+            width: 450px;
+            height: 240px;
+            margin: 20px auto;
+            background-image: url('https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=450&h=240');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #eee;
+        }
+
+        /* 按鈕列 */
+        .button-row {
+            padding: 0 23px 15px; /* 依照設計稿邊距微調 */
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        /* 關鍵：實作設計師標註的 size: h22 / R8 */
+        .info-btn {
+            height: 22px;             /* h22 代表高度 22px */
+            border-radius: 8px;       /* R8 代表圓角 8px */
+            background-color: #ffffff;
+            border: 1px solid #2f2f2f; /* outline 1px #2f2f2f */
+            color: #2f2f2f;           /* Font color #2f2f2f */
+            font-size: 13px;          /* Roboto Regular 13px */
+            padding: 0 10px;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            align-items: center;
+            transition: 0.2s;
+        }
+
+        .info-btn:hover {
             background-color: #f0f0f0;
         }
 
-        /* 讓三張圖片水平排列的容器 */
-        .container {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        /* 詳細資訊區塊 - 預設隱藏 */
+        #info-details {
+            display: none;
+            padding: 15px 23px;
+            background-color: #fdfdfd;
+            border-top: 1px solid #eee;
+            font-size: 13px;
+            color: #707070;
         }
 
-        /* 1. 左側圖片：圓角 18px、不變形 */
-        .no-distortion {
-            width: 33%;
-            height: 300px;
-            border-radius: 18px; /* 依照圖片標註 */
-            object-fit: cover;    /* 關鍵：保持比例不變形 */
+        .info-line {
+            margin-bottom: 5px;
         }
 
-        /* 2. 中間圖片：正圓形 150px、帶邊框 */
-        .circle-border {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;      /* 變成圓形 */
-            border: 1px solid #333;  /* 依照圖片標註的 border */
-            object-fit: cover;       /* 保持比例 */
-        }
-
-        /* 3. 右側圖片：強制拉伸、產生變形 */
-        .distortion {
-            width: 33%;
-            height: 300px;
-            object-fit: fill;        /* 關鍵：強制填滿導致變形 */
-        }
-
-        /* 標籤文字樣式 */
-        .label-text {
-            text-align: center;
-            font-size: 14px;
-            color: #666;
-            margin-top: 10px;
+        .label {
+            color: #2f2f2f;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-    <h2 style="text-align:center;">CSS Image Styling Practice (Ex 23)</h2>
+<div class="preview-card">
+    <!-- 1. 圖片顯示 -->
+    <div class="image-box"></div>
 
-    <div class="container">
-        <!-- 樣式一：No Distortion -->
-        <div>
-            <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=400&h=400" 
-                 class="no-distortion" alt="No Distortion">
-            <div class="label-text">radius 18px / No Distortion</div>
-        </div>
-
-        <!-- 樣式二：Circle -->
-        <div>
-            <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=400&h=400" 
-                 class="circle-border" alt="Circle">
-            <div class="label-text">150px / border</div>
-        </div>
-
-        <!-- 樣式三：Distortion -->
-        <div>
-            <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=400&h=400" 
-                 class="distortion" alt="Distortion">
-            <div class="label-text">width 33% / Distortion</div>
-        </div>
+    <!-- 2. 查看資訊按鈕 -->
+    <div class="button-row">
+        <button class="info-btn" id="toggleBtn">查看資訊</button>
     </div>
+
+    <!-- 3. 點擊後顯示的詳細資訊 -->
+    <div id="info-details">
+        <div class="info-line"><span class="label">修改日期：</span>2017/10/12</div>
+        <div class="info-line"><span class="label">類型：</span>JPG</div>
+        <div class="info-line"><span class="label">大小：</span>488.97KB</div>
+        <div class="info-line"><span class="label">路徑：</span>\Common Module\slice\sample</div>
+    </div>
+</div>
+
+<script>
+    // 取得按鈕與資訊區塊元素
+    const btn = document.getElementById('toggleBtn');
+    const details = document.getElementById('info-details');
+
+    // 監聽點擊事件
+    btn.addEventListener('click', function() {
+        if (details.style.display === 'block') {
+            details.style.display = 'none';
+            this.textContent = '查看資訊';
+        } else {
+            details.style.display = 'block';
+            this.textContent = '收起資訊';
+        }
+    });
+</script>
 
 </body>
 </html>
