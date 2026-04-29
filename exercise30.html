@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>互動網頁範例</title>
+    <style>
+        /* 設定外框容器樣式 */
+        .container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        /* 初始文字樣式 */
+        #displayText {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: black; /* 初始顏色 */
+        }
+
+        /* 按鈕樣式 */
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="displayText">Hello</div>
+        <button id="actionButton">Button</button>
+    </div>
+
+    <script>
+        // 1. 取得 DOM 元素
+        const text = document.getElementById('displayText');
+        const btn = document.getElementById('actionButton');
+
+        // 2. 監聽滑鼠移入事件 (Mouse Over)
+        btn.addEventListener('mouseover', function() {
+            text.style.color = '#ff00ff'; // 變更為粉紅色
+        });
+
+        // 3. 監聽滑鼠移出事件 (選擇性：若想移開後變回黑色)
+        btn.addEventListener('mouseout', function() {
+            // 如果點擊後不需要變回黑色，可以移除這段
+            if (text.innerText !== "Mouse Click") {
+                text.style.color = 'black';
+            }
+        });
+
+        // 4. 監聽滑鼠點擊事件 (Mouse Click)
+        btn.addEventListener('click', function() {
+            text.innerText = "Mouse Click";
+            text.style.color = '#ff00ff'; // 確保點擊後維持顏色
+        });
+    </script>
+
+</body>
+</html>
