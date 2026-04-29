@@ -3,96 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>表單輸入練習</title>
+    <title>CSS 圖片樣式練習</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        /* 讓容器內的圖片水平排列 */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 20px;
-            line-height: 2;
+            gap: 10px;
         }
 
-        .input-group {
-            margin-bottom: 10px;
+        /* 左側圖片：圓角、不變形 */
+        .no-distortion {
+            width: 33%;
+            height: 300px;
+            border-radius: 18px; /* 標註 radius 18px */
+            object-fit: cover;    /* 關鍵：防止變形 */
         }
 
-        .input-group label {
-            display: inline-block;
-            width: 60px;
+        /* 中間圖片：正圓形、150px */
+        .circle-border {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;   /* 變成圓形 */
+            border: 1px solid #333; /* 標註 border */
+            object-fit: cover;
         }
 
-        /* 按鈕樣式 */
-        #submitBtn {
-            margin-top: 10px;
-            padding: 5px 15px;
-            cursor: pointer;
-        }
-
-        /* 顯示結果的區塊 */
-        #resultArea {
-            margin-top: 20px;
-            padding: 15px;
-            border: 1px dashed #777;
-            background-color: #f9f9f9;
-            width: fit-content;
-            min-width: 200px;
-        }
-
-        .highlight {
-            color: blue;
-            font-weight: bold;
+        /* 右側圖片：變形 */
+        .distortion {
+            width: 33%;
+            height: 300px;
+            object-fit: fill;     /* 會導致圖片拉伸變形 */
         }
     </style>
 </head>
 <body>
 
-    <h2>請輸入您的資訊</h2>
+    <div class="container">
+        <!-- 左側：No Distortion -->
+        <img src="https://picsum.photos/800/800" class="no-distortion" alt="無變形圓角圖片">
 
-    <div class="input-group">
-        <label for="userName">姓名：</label>
-        <input type="text" id="userName" placeholder="請輸入姓名">
+        <!-- 中間：Circle Border -->
+        <img src="https://picsum.photos/800/800" class="circle-border" alt="圓形邊框圖片">
+
+        <!-- 右側：Distortion -->
+        <img src="https://picsum.photos/800/800" class="distortion" alt="變形圖片">
     </div>
-
-    <div class="input-group">
-        <label for="userPhone">電話：</label>
-        <input type="text" id="userPhone" placeholder="請輸入電話">
-    </div>
-
-    <button id="submitBtn">送出</button>
-
-    <hr>
-
-    <div id="resultArea">
-        <p>確認資訊：</p>
-        <div>姓名：<span id="displayName" class="highlight">---</span></div>
-        <div>電話：<span id="displayPhone" class="highlight">---</span></div>
-    </div>
-
-    <script>
-        // 1. 取得 DOM 元素
-        const nameInput = document.getElementById('userName');
-        const phoneInput = document.getElementById('userPhone');
-        const submitBtn = document.getElementById('submitBtn');
-        
-        const displayName = document.getElementById('displayName');
-        const displayPhone = document.getElementById('displayPhone');
-
-        // 2. 監聽點擊事件
-        submitBtn.addEventListener('click', function() {
-            // 讀取輸入值
-            const nameValue = nameInput.value;
-            const phoneValue = phoneInput.value;
-
-            // 簡單的驗證
-            if (nameValue === "" || phoneValue === "") {
-                alert("請填寫完整資訊喔！");
-                return;
-            }
-
-            // 3. 將資料顯示到網頁上
-            displayName.innerText = nameValue;
-            displayPhone.innerText = phoneValue;
-        });
-    </script>
 
 </body>
 </html>
