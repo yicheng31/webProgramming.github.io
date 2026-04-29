@@ -1,1 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap 練習頁面</title>
+    
+    <!-- 引入 Bootstrap 3.4.1 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    
+    <style>
+        /* 額外微調間距，讓畫面更接近圖片 */
+        .container {
+            margin-top: 30px;
+            max-width: 600px; /* 限制寬度讓它看起來更像範例圖 */
+        }
+        .form-group, .alert, .btn-group-wrapper {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
 
+    <!-- A <div> with class="container" -->
+    <div class="container">
+        
+        <!-- A <div> with class="jumbotron" -->
+        <div class="jumbotron">
+            <h1>My First Bootstrap Page</h1>
+        </div>
+
+        <!-- Input 區域 -->
+        <div class="form-group">
+            <label for="usr">Input:</label>
+            <!-- A <input> with type="text", class="form-control" -->
+            <input type="text" class="form-control" id="usr">
+        </div>
+
+        <!-- A <div> with class="alert alert-success" -->
+        <div class="alert alert-success">
+            Successful alert
+        </div>
+
+        <div class="btn-group-wrapper">
+            <!-- A <button> with class="btn btn-default" -->
+            <button type="button" class="btn btn-default">Button</button>
+            
+            <!-- A <span> with class="badge" -->
+            <span class="badge">badge</span>
+        </div>
+
+    </div>
+
+    <!-- 選擇性：如果需要互動元件，可以引入 jQuery 和 Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
