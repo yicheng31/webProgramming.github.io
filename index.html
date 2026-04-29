@@ -182,6 +182,7 @@
 <ul>
     <li><a href="exercise20.html">ex20</a></li>
     <li><a href="exercise21.html">ex21</a></li>
+    <li><a href="exercise30.html">ex30</a></li>
 </ul>
 
 </div>
@@ -260,11 +261,7 @@
         
     </div>
     
-    <h1>Exercise 30</h1>
-    <div class="container">
-        <div id="displayText">Hello</div>
-        <button id="actionButton">Button</button>
-    </div>
+    
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -283,28 +280,6 @@
                 console.log("狀態：已收起");
             }
         }
-        // 1. 取得 DOM 元素
-        const text = document.getElementById('displayText');
-        const btn = document.getElementById('actionButton');
-
-        // 2. 監聽滑鼠移入事件 (Mouse Over)
-        btn.addEventListener('mouseover', function() {
-            text.style.color = '#ff00ff'; // 變更為粉紅色
-        });
-
-        // 3. 監聽滑鼠移出事件 (選擇性：若想移開後變回黑色)
-        btn.addEventListener('mouseout', function() {
-            // 如果點擊後不需要變回黑色，可以移除這段
-            if (text.innerText !== "Mouse Click") {
-                text.style.color = 'black';
-            }
-        });
-
-        // 4. 監聽滑鼠點擊事件 (Mouse Click)
-        btn.addEventListener('click', function() {
-            text.innerText = "Mouse Click";
-            text.style.color = '#ff00ff'; // 確保點擊後維持顏色
-        });
         console.log("Hello JavaScript");
     </script>
 
