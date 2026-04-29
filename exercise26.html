@@ -1,1 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表單輸入練習</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            line-height: 2;
+        }
 
+        .input-group {
+            margin-bottom: 10px;
+        }
+
+        .input-group label {
+            display: inline-block;
+            width: 60px;
+        }
+
+        /* 按鈕樣式 */
+        #submitBtn {
+            margin-top: 10px;
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+
+        /* 顯示結果的區塊 */
+        #resultArea {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px dashed #777;
+            background-color: #f9f9f9;
+            width: fit-content;
+            min-width: 200px;
+        }
+
+        .highlight {
+            color: blue;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>請輸入您的資訊</h2>
+
+    <div class="input-group">
+        <label for="userName">姓名：</label>
+        <input type="text" id="userName" placeholder="請輸入姓名">
+    </div>
+
+    <div class="input-group">
+        <label for="userPhone">電話：</label>
+        <input type="text" id="userPhone" placeholder="請輸入電話">
+    </div>
+
+    <button id="submitBtn">送出</button>
+
+    <hr>
+
+    <div id="resultArea">
+        <p>確認資訊：</p>
+        <div>姓名：<span id="displayName" class="highlight">---</span></div>
+        <div>電話：<span id="displayPhone" class="highlight">---</span></div>
+    </div>
+
+    <script>
+        // 1. 取得 DOM 元素
+        const nameInput = document.getElementById('userName');
+        const phoneInput = document.getElementById('userPhone');
+        const submitBtn = document.getElementById('submitBtn');
+        
+        const displayName = document.getElementById('displayName');
+        const displayPhone = document.getElementById('displayPhone');
+
+        // 2. 監聽點擊事件
+        submitBtn.addEventListener('click', function() {
+            // 讀取輸入值
+            const nameValue = nameInput.value;
+            const phoneValue = phoneInput.value;
+
+            // 簡單的驗證
+            if (nameValue === "" || phoneValue === "") {
+                alert("請填寫完整資訊喔！");
+                return;
+            }
+
+            // 3. 將資料顯示到網頁上
+            displayName.innerText = nameValue;
+            displayPhone.innerText = phoneValue;
+        });
+    </script>
+
+</body>
+</html>
