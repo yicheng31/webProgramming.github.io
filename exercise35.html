@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript 物件處理練習</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; padding: 20px; }
+        .container { border: 1px solid #ccc; padding: 15px; border-radius: 8px; }
+        code { background: #f4f4f4; padding: 2px 5px; }
+        pre { background: #2d2d2d; color: #ccc; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>JavaScript 物件處理結果</h2>
+        
+        <p><strong>1. 原始物件的所有屬性：</strong></p>
+        <div id="property-list"></div>
+
+        <hr>
+
+        <p><strong>2. 刪除 <code>age</code> 屬性後的物件內容：</strong></p>
+        <pre id="result-object"></pre>
+    </div>
+
+    <script>
+        // 根據 image_39ca79.png 定義的 Sample Object
+        var Person = {
+            firstName : "Tony",
+            lastName : "Lee",
+            age : 50,
+            eyeColor : "Blue"
+        };
+
+        // 1. 列出所有屬性 (Keys)
+        var properties = Object.keys(Person);
+        document.getElementById('property-list').innerText = properties.join(', ');
+
+        // 2. 刪除 age 屬性
+        delete Person.age;
+
+        // 3. 印出處理後的物件
+        // 使用 JSON.stringify 讓物件以易讀的格式顯示
+        document.getElementById('result-object').textContent = JSON.stringify(Person, null, 4);
+        
+        // 同時在開發者工具控制台輸出
+        console.log("處理後的物件：", Person);
+    </script>
+</body>
+</html>
